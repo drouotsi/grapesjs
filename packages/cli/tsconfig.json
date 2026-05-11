@@ -15,7 +15,8 @@
     "strictNullChecks": false,
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
   "include": ["src/cli.ts"]
 }
