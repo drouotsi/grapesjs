@@ -1,1 +1,7 @@
-packages/core/README.md
+# Grapesjs fork
+
+## Setup
+
+```shell
+
+```
