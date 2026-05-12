@@ -17,6 +17,13 @@
     }
   }
 
+  &devices{
+    &-c{
+      right: var(--gjs-left-width);
+      height: var(--gjs-canvas-top);
+    }
+  }
+
   &commands {
     width: calc(100% - var(--gjs-left-width));
     left: var(--gjs-left-width);
@@ -27,6 +34,7 @@
   &options {
     right: 0;
     top: 0;
+    width: var(--gjs-left-width);
   }
 
   &views {
