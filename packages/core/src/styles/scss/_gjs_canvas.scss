@@ -204,7 +204,7 @@ $guide_pad: 5px !default;
   overflow: hidden;
   z-index: 1;
   position: absolute;
-  left: 0;
+  left: var(--gjs-left-width);
   top: var(--gjs-canvas-top);
 
   &-bg {
