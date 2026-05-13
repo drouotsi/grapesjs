@@ -81,6 +81,7 @@ const config: () => PanelsConfig = () => ({
         {
           id: openPages,
           command: openPages,
+          active: true,
           togglable: false,
           label: 'Pages',
           attributes: { title: 'Open pages' },
