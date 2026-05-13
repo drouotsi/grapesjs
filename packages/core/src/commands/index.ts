@@ -71,6 +71,8 @@ const commandsDef = [
   ['component-delete', 'ComponentDelete'],
   ['component-style-clear', 'ComponentStyleClear'],
   ['component-drag', 'ComponentDrag'],
+
+  ['open-pages', 'OpenPages', 'open-pages'],
 ];
 
 const defComOptions = { preserveSelected: 1 };

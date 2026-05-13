@@ -8,6 +8,7 @@ const ola = 'open-layers';
 const obl = 'open-blocks';
 const ful = 'fullscreen';
 const prv = 'preview';
+const openPages = 'open-pages';
 
 interface ButtonProps {
   id?: string;
@@ -78,33 +79,18 @@ const config: () => PanelsConfig = () => ({
       id: 'views',
       buttons: [
         {
-          id: osm,
-          className: 'fa fa-paint-brush',
-          command: osm,
-          active: true,
+          id: openPages,
+          command: openPages,
           togglable: false,
-          attributes: { title: 'Open Style Manager' },
-        },
-        {
-          id: otm,
-          className: 'fa fa-cog',
-          command: otm,
-          togglable: false,
-          attributes: { title: 'Settings' },
-        },
-        {
-          id: ola,
-          className: 'fa fa-bars',
-          command: ola,
-          togglable: false,
-          attributes: { title: 'Open Layer Manager' },
+          label: 'Pages',
+          attributes: { title: 'Open pages' },
         },
         {
           id: obl,
-          className: 'fa fa-th-large',
           command: obl,
           togglable: false,
-          attributes: { title: 'Open Blocks' },
+          label: 'Edition',
+          attributes: { title: 'Open edition' },
         },
       ],
     },
