@@ -17,8 +17,8 @@
     }
   }
 
-  &devices{
-    &-c{
+  &devices {
+    &-c {
       right: var(--gjs-left-width);
       height: var(--gjs-canvas-top);
     }
