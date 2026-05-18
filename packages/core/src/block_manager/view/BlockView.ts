@@ -37,7 +37,10 @@ export default class BlockView extends View<Block> {
     this.config = config;
     this.endDrag = this.endDrag.bind(this);
     this.ppfx = config.pStylePrefix || '';
-    this.listenTo(model, 'destroy remove', this.remove);
+    this.listenTo(model, 'destroy remove', () => {
+      this.model.getOnRemove()?.();
+      this.remove();
+    });
     this.listenTo(model, 'change', this.render);
   }
 
@@ -101,6 +104,7 @@ export default class BlockView extends View<Block> {
    * @private
    */
   startDrag(e: MouseEvent) {
+    console.log('Start dragging block');
     const { config, em, model } = this;
     const disable = model.get('disable');
     //Right or middel click
@@ -160,27 +164,33 @@ export default class BlockView extends View<Block> {
   }
 
   render() {
-    const { em, el, $el, ppfx, model } = this;
+    const { em, $el, ppfx, model } = this;
     const disable = model.get('disable');
     const attr = model.get('attributes') || {};
-    const cls = attr.class || '';
-    const className = `${ppfx}block`;
-    const label = (em && em.t(`blockManager.labels.${model.id}`)) || model.get('label');
-    // @ts-ignore deprecated
-    const render = model.get('render');
-    const media = model.get('media');
-    const clsAdd = disable ? `${className}--disable` : `${ppfx}four-color-h`;
-    $el.attr(attr);
-    el.className = `${cls} ${className} ${ppfx}one-bg ${clsAdd}`.trim();
-    el.innerHTML = `
+    const element = model.getOnRender()?.();
+    if (element) {
+      this.setElement(element);
+    } else {
+      const el = this.el;
+      const cls = attr.class || '';
+      const className = `${ppfx}block`;
+      const label = (em && em.t(`blockManager.labels.${model.id}`)) || model.get('label');
+      // @ts-ignore deprecated
+      const render = model.get('render');
+      const media = model.get('media');
+      const clsAdd = disable ? `${className}--disable` : `${ppfx}four-color-h`;
+      el.className = `${cls} ${className} ${ppfx}one-bg ${clsAdd}`.trim();
+      el.innerHTML = `
       ${media ? `<div class="${className}__media">${media}</div>` : ''}
       <div class="${className}-label">${label}</div>
     `;
-    el.title = attr.title || el.textContent?.trim();
-    el.setAttribute('draggable', `${hasDnd(em) && !disable ? true : false}`);
-    // @ts-ignore
-    const result = render && render({ el, model, className, prefix: ppfx });
-    if (result) el.innerHTML = result;
+      el.title = attr.title || el.textContent?.trim();
+      $el.attr(attr);
+      // @ts-ignore
+      const result = render && render({ el, model, className, prefix: ppfx });
+      if (result) el.innerHTML = result;
+    }
+    this.el.setAttribute('draggable', `${!disable}`);
     return this;
   }
 }

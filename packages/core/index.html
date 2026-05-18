@@ -152,8 +152,19 @@
 
       editor.BlockManager.add('testBlock', {
         label: 'Block',
-        attributes: { class: 'gjs-fonts gjs-f-b1' },
-        content: `<div style="padding-top:50px; padding-bottom:50px; text-align:center">Test block</div>`,
+        content: `<div style="padding:10px; text-align:center">Test block</div>`,
+      });
+
+      editor.BlockManager.add('testCustomElement', {
+        onRender: () => {
+          const testDiv = document.createElement('div');
+          testDiv.style.padding = '10px';
+          testDiv.innerHTML = '<p>Test custom block</p>';
+          console.log('Custom block rendered');
+          return testDiv;
+        },
+        onRemove: () => console.log('Custom block removed'),
+        content: `<div style="padding:20px; text-align:center">Test custom block</div>`,
       });
     </script>
   </body>

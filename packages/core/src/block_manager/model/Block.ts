@@ -8,6 +8,15 @@ import { DraggableContent } from '../../utils/sorter/types';
 /** @private */
 export interface BlockProperties extends DraggableContent {
   /**
+   * Called when rendering the block. Should return the HTML element representing the block. Overrides media, label, and className properties if provided.
+   */
+  onRender?: () => HTMLElement;
+  /**
+   * Called when the block is removed. Can be used to clean up any resources or event listeners associated with the block.
+   * @returns {void}
+   */
+  onRemove?: () => void;
+  /**
    * Block label, eg. `My block`
    */
   label: string;
@@ -88,6 +97,8 @@ export default class Block extends Model<BlockProperties> {
       onClick: undefined,
       attributes: {},
       dragDef: {},
+      onRender: undefined,
+      onRemove: undefined,
     };
   }
 
@@ -132,6 +143,21 @@ export default class Block extends Model<BlockProperties> {
     return this.get('content');
   }
 
+  /**
+   * Get block HTML element
+   * @returns {() => HTMLElement | undefined}
+   */
+  getOnRender() {
+    return this.get('onRender');
+  }
+
+  /**
+   * Get block onRemove callback
+   * @returns {() => void | undefined}
+   */
+  getOnRemove() {
+    return this.get('onRemove');
+  }
   /**
    * Get block component dragDef
    * @returns {ComponentDefinition}
