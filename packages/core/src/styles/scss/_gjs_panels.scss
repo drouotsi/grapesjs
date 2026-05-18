@@ -44,7 +44,7 @@
     z-index: 4;
 
     &-container {
-      height: 100%;
+      height: calc(100% - 42px);
       margin: 42px 0 0;
       right: calc(var(--gjs-right-flex) - var(--gjs-left-width));
       width: var(--gjs-left-width);

@@ -18,7 +18,6 @@
   --gjs-color-yellow: #{gjs_vars.$colorYell};
   --gjs-color-green: #{gjs_vars.$colorGreen};
   --gjs-left-width: #{gjs_vars.$leftWidth};
-  --gjs-right-flex: #{gjs_vars.$rightFlex};
   --gjs-color-highlight: #{gjs_vars.$colorHighlight};
   --gjs-color-warn: #{gjs_vars.$colorWarn};
   --gjs-handle-margin: #{gjs_vars.$hndlMargin};
@@ -35,4 +34,6 @@
   --gjs-placeholder-background-color: #{gjs_vars.$placeholderColor};
   --gjs-canvas-top: #{gjs_vars.$canvasTop};
   --gjs-flex-item-gap: 5px;
+
+  --gjs-right-flex: #{gjs_vars.$rightFlex};
 }

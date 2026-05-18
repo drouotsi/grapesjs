@@ -361,11 +361,32 @@ export default class FrameView extends ModuleView<Frame, HTMLIFrameElement> {
       [data-gjs-type="wrapper"] {
         ${!hasAutoHeight ? 'min-height: 100vh;' : ''}
         padding-top: 0.001em;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        background-color: var(--main-background);
+        border-radius: 0 !important;
       }
 
       .${ppfx}dashed *[data-gjs-highlightable] {
         outline: 1px dashed rgba(170,170,170,0.7);
         outline-offset: -2px;
+        border-radius: 5px;
+        color: var(--text-color);
+      }
+      
+      /* In our case we are more likely to use this pattern as the other one create conflicts */
+      [data-gjs-highlightable] {
+        outline: 1px dashed rgba(170,170,170,0.7);
+        outline-offset: -2px;
+        border-radius: 5px;
+        color: var(--text-color);
+      }
+      
+      [data-gjs-type="text"] {
+        padding: 4px;
+        color: var(--text-color);
       }
 
       .${ppfx}selected {
