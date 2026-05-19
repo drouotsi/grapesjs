@@ -363,10 +363,13 @@ export default class FrameView extends ModuleView<Frame, HTMLIFrameElement> {
         padding-top: 0.001em;
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        padding: 20px;
+        gap: var(--gjs-section-padding);
+        padding: var(--gjs-section-padding);
         background-color: var(--main-background);
         border-radius: 0 !important;
+        transition:
+          gap 240ms cubic-bezier(0.4, 0, 0.2, 1),
+          padding 240ms cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .${ppfx}dashed *[data-gjs-highlightable] {
