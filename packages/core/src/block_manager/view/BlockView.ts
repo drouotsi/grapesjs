@@ -104,7 +104,6 @@ export default class BlockView extends View<Block> {
    * @private
    */
   startDrag(e: MouseEvent) {
-    console.log('Start dragging block');
     const { config, em, model } = this;
     const disable = model.get('disable');
     //Right or middel click
@@ -121,6 +120,23 @@ export default class BlockView extends View<Block> {
   }
 
   handleDragStart(ev: DragEvent) {
+    const { em } = this;
+    const doc = em.Canvas.getDocument();
+    if (doc) {
+      const styleElement = doc.getElementsByTagName('style');
+      if (!styleElement) {
+        const style = doc.createElement('style');
+        style.innerHTML = `
+        :root {
+          --gjs-section-padding: 20px;
+        }
+      `;
+        doc.head.appendChild(style);
+      }
+      else {
+        doc.documentElement.style.setProperty('--gjs-section-padding', '20px');
+      }
+    }
     this.__getModule().__startDrag(this.model, ev);
   }
 
@@ -129,6 +145,11 @@ export default class BlockView extends View<Block> {
   }
 
   handleDragEnd() {
+    const { em } = this;
+    const doc = em.Canvas.getDocument();
+    if (doc) {
+      doc.documentElement.style.setProperty('--gjs-section-padding', '0');
+    }
     this.__getModule().__endDrag();
   }
 
