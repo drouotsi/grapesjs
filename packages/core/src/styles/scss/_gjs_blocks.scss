@@ -4,8 +4,8 @@
 
 .#{gjs_vars.$app-prefix}blocks-c {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
+  flex-direction: column;
 }
 
 .#{gjs_vars.$app-prefix}block-categories {
@@ -32,27 +32,23 @@
 .#{gjs_vars.$app-prefix}block {
   @include gjs_main_mixins.user-select(none);
 
-  width: 45%;
-  min-width: 45px;
   padding: 1em;
   box-sizing: border-box;
-  min-height: 90px;
   cursor: all-scroll;
   font-size: 11px;
   font-weight: lighter;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  margin: 10px 2.5% 5px;
-  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.15);
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 8px;
   transition: all 0.2s ease 0s;
   transition-property: box-shadow, color;
 
   &:hover {
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.15);
+    background-color: var(--gjs-quaternary-color);
+    color: var(--gjs-secondary-color) !important;
   }
 
   svg {
@@ -60,8 +56,9 @@
   }
 
   &__media {
-    margin-bottom: 10px;
     pointer-events: none;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -82,8 +79,8 @@
 
 .#{gjs_vars.$app-prefix}block-label {
   line-height: normal;
-  font-size: 0.65rem;
-  font-weight: normal;
+  font-size: 0.75rem;
+  font-weight: bold;
   font-family: Helvetica, sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
