@@ -372,14 +372,8 @@ export default class FrameView extends ModuleView<Frame, HTMLIFrameElement> {
           padding 240ms cubic-bezier(0.4, 0, 0.2, 1);
       }
       
-      [data-gjs-type="grid"] {
-        padding: var(--gjs-section-padding);
-        background-color: var(--main-background);
-        transition:
-          gap 240ms cubic-bezier(0.4, 0, 0.2, 1),
-          padding 240ms cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
+      [data-gjs-type="grid"],
+      [data-gjs-type="default"],
       [data-gjs-type="cell"] {
         padding: var(--gjs-section-padding);
         background-color: var(--main-background);
