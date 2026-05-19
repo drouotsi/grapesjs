@@ -371,6 +371,14 @@ export default class FrameView extends ModuleView<Frame, HTMLIFrameElement> {
           gap 240ms cubic-bezier(0.4, 0, 0.2, 1),
           padding 240ms cubic-bezier(0.4, 0, 0.2, 1);
       }
+      
+      [data-gjs-type="grid"] {
+        padding: var(--gjs-section-padding);
+        background-color: var(--main-background);
+        transition:
+          gap 240ms cubic-bezier(0.4, 0, 0.2, 1),
+          padding 240ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
       .${ppfx}dashed *[data-gjs-highlightable] {
         outline: 1px dashed rgba(170,170,170,0.7);
