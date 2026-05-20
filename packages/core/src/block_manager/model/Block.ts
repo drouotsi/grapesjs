@@ -19,7 +19,7 @@ export interface BlockProperties extends DraggableContent {
   /**
    * Block label, eg. `My block`
    */
-  label: string;
+  label?: string;
   /**
    * HTML string for the media/icon of the block, eg. `<svg ...`, `<img ...`, etc.
    * @default ''
