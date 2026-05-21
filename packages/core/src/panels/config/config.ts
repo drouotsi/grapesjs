@@ -78,35 +78,6 @@ const config: () => PanelsConfig = () => ({
     {
       id: 'views',
       buttons: [
-        {
-          id: openPages,
-          command: openPages,
-          active: true,
-          togglable: false,
-          label: 'Pages',
-          attributes: { title: 'Open pages' },
-        },
-        {
-          id: obl,
-          command: obl,
-          togglable: false,
-          label: 'Edition',
-          attributes: { title: 'Open edition' },
-        },
-        {
-          id: otm,
-          className: 'fa fa-cog',
-          command: otm,
-          togglable: false,
-          attributes: { title: 'Settings' },
-        },
-        {
-          id: osm,
-          className: 'fa fa-paint-brush',
-          command: osm,
-          togglable: false,
-          attributes: { title: 'Open Style Manager' },
-        },
       ],
     },
   ],

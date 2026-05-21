@@ -4,6 +4,7 @@ import { EditorConfig } from './editor/config/config';
 import PluginManager, { Plugin, getPlugin, logPluginWarn } from './plugin_manager';
 import $ from './utils/cash-dom';
 import polyfills from './utils/polyfills';
+import { createEl } from './utils/dom';
 
 export interface InitEditorConfig extends EditorConfig {
   grapesjs?: typeof grapesjs;
@@ -81,6 +82,17 @@ export const grapesjs = {
         logPluginWarn(editor, pluginId as string);
       }
     });
+
+    const container = createEl('div');
+    const bm = editor.Blocks;
+    bm.__behaviour({
+      container,
+    });
+    const id = 'views-container';
+    const pn = editor.Panels;
+    const panels = pn.getPanel(id) || pn.addPanel({ id });
+    panels.set('appendContent', container).trigger('change:appendContent');
+    //container.appendChild(bm.render());
 
     // Execute `onLoad` on modules once all plugins are initialized.
     // A plugin might have extended/added some custom type so this

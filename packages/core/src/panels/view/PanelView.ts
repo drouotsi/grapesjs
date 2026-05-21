@@ -111,20 +111,21 @@ export default class PanelView extends ModuleView<Panel> {
   }
 
   render() {
-    const { buttons } = this.model;
-    const $el = this.$el;
-    const ppfx = this.ppfx;
-    const cls = `${this.className} ${this.id} ${ppfx}one-bg ${ppfx}two-color`;
-    $el.addClass(cls);
+    if (this.id?.includes('views')) {
+      const { buttons } = this.model;
+      const $el = this.$el;
+      const ppfx = this.ppfx;
+      const cls = `${this.className} ${this.id} ${ppfx}one-bg ${ppfx}two-color`;
+      $el.addClass(cls);
 
-    this.toggleVisible();
+      this.toggleVisible();
+      if (buttons.length) {
+        var buttonsView = new ButtonsView(buttons);
+        $el.append(buttonsView.render().el);
+      }
 
-    if (buttons.length) {
-      var buttonsView = new ButtonsView(buttons);
-      $el.append(buttonsView.render().el);
+      $el.append(this.model.get('content')!);
     }
-
-    $el.append(this.model.get('content')!);
     return this;
   }
 }
