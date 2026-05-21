@@ -1,6 +1,7 @@
 import { ComponentDefinition } from '../../dom_components/model/types';
 import EditorModel from '../../editor/model/Editor';
 import Dimension from './Dimension';
+import { PlaceHolderElements } from './PlaceholderClass';
 import { SortableTreeNode } from './SortableTreeNode';
 
 export type ContentElement = string | ComponentDefinition;
@@ -46,7 +47,7 @@ export interface SorterContainerContext {
   itemSel: string;
   pfx: string;
   document: Document;
-  placeholderElement: HTMLElement;
+  placeholderElements: PlaceHolderElements;
   customTarget?: CustomTarget;
 }
 
