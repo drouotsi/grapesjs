@@ -162,7 +162,7 @@ export default class Sorter<T, NodeType extends SortableTreeNode<T>> {
       container: this.containerContext.container,
       allowNesting: this.dragBehavior.nested,
       pfx: this.containerContext.pfx,
-      el: this.containerContext.placeholderElement,
+      els: this.containerContext.placeholderElements,
       offset: {
         top: this.positionOptions.offsetTop!,
         left: this.positionOptions.offsetLeft!,
