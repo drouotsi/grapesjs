@@ -45,6 +45,7 @@ import CanvasView, { FitViewportOptions } from './view/CanvasView';
 import FrameView from './view/FrameView';
 import { DragSource } from '../utils/sorter/types';
 import AutoScroller from '../utils/AutoScroller';
+import { PlaceHolderElements } from '../utils/sorter/PlaceholderClass';
 
 export type CanvasEvent = `${CanvasEvents}`;
 
@@ -201,6 +202,13 @@ export default class CanvasModule extends Module<CanvasConfig> {
    */
   getPlacerEl() {
     return this.getCanvasView().placerEl;
+  }
+
+  /**
+   * Returns placer elements (row, column, inner)
+   */
+  getPlacerEls(): PlaceHolderElements | undefined {
+    return this.config.placeHolderElements;
   }
 
   /**

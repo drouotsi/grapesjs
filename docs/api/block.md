@@ -39,6 +39,14 @@ Get block content
 
 Returns **([Object][2] | [String][1] | [Array][6]<([Object][2] | [String][1])>)**&#x20;
 
+## getOnRender
+
+Get block HTML element
+
+## getOnRemove
+
+Get block onRemove callback
+
 ## getDragDef
 
 Get block component dragDef

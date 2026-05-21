@@ -81,7 +81,7 @@ export default class BlocksView extends View {
           containerSel: '*',
           itemSel: '*',
           pfx: this.ppfx,
-          placeholderElement: canvas.getPlacerEl()!,
+          placeholderElements: canvas.getPlacerEls()!,
           document: canvas.getBody().ownerDocument,
         },
         dragBehavior: {

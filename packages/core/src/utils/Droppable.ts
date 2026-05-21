@@ -167,7 +167,7 @@ export default class Droppable {
           containerSel: '*',
           itemSel: '*',
           pfx: 'gjs-',
-          placeholderElement: canvas.getPlacerEl()!,
+          placeholderElements: canvas.getPlacerEls()!,
           document: this.el.ownerDocument,
         },
         dragBehavior: {

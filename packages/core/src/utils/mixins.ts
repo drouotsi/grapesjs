@@ -239,7 +239,11 @@ export const deepMerge = (...args: ObjectAny[]) => {
       const srcValue = source[key];
 
       if (isObject(targValue) && isObject(srcValue)) {
-        target[key] = deepMerge(targValue, srcValue);
+        if (srcValue instanceof Node) {
+          target[key] = srcValue;
+        } else {
+          target[key] = deepMerge(targValue, srcValue);
+        }
       } else {
         target[key] = srcValue;
       }

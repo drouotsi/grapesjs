@@ -8,6 +8,7 @@ import LayerManager from '..';
 import { DragDirection } from '../../utils/sorter/types';
 import LayersComponentNode from '../../utils/sorter/LayersComponentNode';
 import ComponentSorter from '../../utils/sorter/ComponentSorter';
+import { defaultPlaceholderElements } from '../../utils/sorter/PlaceholderClass';
 
 export default class ItemsView extends View {
   items: ItemView[];
@@ -41,7 +42,6 @@ export default class ItemsView extends View {
     if (config.sortable && !this.opt.sorter) {
       const utils = em.Utils;
       const container = config.sortContainer || this.el;
-      const placeholderElement = this.createPlaceholder(pfx);
       this.opt.sorter = new utils.ComponentSorter({
         em,
         treeClass: LayersComponentNode,
@@ -51,7 +51,7 @@ export default class ItemsView extends View {
           itemSel: `.${pfx}layer`,
           pfx: config.pStylePrefix,
           document: document,
-          placeholderElement: placeholderElement,
+          placeholderElements: defaultPlaceholderElements(), // TODO: check that
         },
         dragBehavior: {
           dragDirection: DragDirection.Vertical,
