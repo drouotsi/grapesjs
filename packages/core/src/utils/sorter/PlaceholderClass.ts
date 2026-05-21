@@ -32,7 +32,8 @@ export const defaultPlaceholderElements = () => {
   columnElement.style.border = border;
 
   const innerElement = document.createElement('div');
-  innerElement.style.position = 'absolute';
+  innerElement.style.height = '20px';
+  innerElement.style.width = '100%';
   innerElement.style.padding = '10px';
   innerElement.style.background = backgroundColor;
   innerElement.style.border = border;
@@ -117,19 +118,27 @@ export class PlaceholderClass extends View {
     });
   }
 
+  private _isRowOrGrid(element: HTMLElement): boolean {
+    const style = getComputedStyle(element);
+    return (style.display === 'flex' && style.flexDirection === 'row') || style.display === 'grid';
+  }
+
   private _move(elementDimension: Dimension, placement: Placement) {
     const { el } = elementDimension;
     this._remove();
     const droppableTags = ['div', 'section', 'a']; // TODO: make it customizable
-    if (el && placement == 'inside' && droppableTags.includes(el.tagName.toLowerCase()) && el.children.length === 0) {
-      el.append(this.els.innerElement);
+    if (el && droppableTags.includes(el.tagName.toLowerCase()) && placement === 'inside') {
+      if (this._isRowOrGrid(el)) {
+        el.append(this.els.columnElement);
+      } else {
+        el.append(this.els.innerElement);
+      }
       return;
     }
     if (el && el.parentElement && droppableTags.includes(el.parentElement.tagName.toLowerCase())) {
       const parent = el.parentElement;
       let selectedElement: HTMLElement | null = null;
-      const parentStyle = getComputedStyle(parent);
-      if (parentStyle.display === 'flex' && parentStyle.flexDirection === 'row') {
+      if (this._isRowOrGrid(parent)) {
         selectedElement = this.els.columnElement;
       } else {
         selectedElement = this.els.rowElement;
