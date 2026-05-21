@@ -569,6 +569,6 @@ export class DropLocationDeterminer<T, NodeType extends SortableTreeNode<T>> ext
       width = el.offsetWidth;
     }
 
-    return new Dimension({ top, left, height, width, offsets });
+    return new Dimension({ top, left, height, width, offsets, el });
   }
 }

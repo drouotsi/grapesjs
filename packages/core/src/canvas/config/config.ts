@@ -1,6 +1,7 @@
 import Component from '../../dom_components/model/Component';
 import ComponentView from '../../dom_components/view/ComponentView';
 import Editor from '../../editor';
+import { defaultPlaceholderElements, PlaceHolderElements } from '../../utils/sorter/PlaceholderClass';
 import { CanvasSpotBuiltInTypes } from '../model/CanvasSpot';
 import Frame from '../model/Frame';
 import FrameView from '../view/FrameView';
@@ -127,6 +128,8 @@ export interface CanvasConfig {
    * }
    */
   customRenderer?: (props: CustomRendererProps) => void;
+
+  placeHolderElements?: PlaceHolderElements;
 }
 
 const config: () => CanvasConfig = () => ({
@@ -145,6 +148,7 @@ const config: () => CanvasConfig = () => ({
   `,
   notTextable: ['button', 'a', 'input[type=checkbox]', 'input[type=radio]'],
   allowExternalDrop: true,
+  placeHolderElements: defaultPlaceholderElements(),
 });
 
 export default config;

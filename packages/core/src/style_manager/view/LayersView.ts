@@ -1,5 +1,6 @@
 import { View } from '../../common';
 import EditorModel from '../../editor/model/Editor';
+import { defaultPlaceholderElements } from '../../utils/sorter/PlaceholderClass';
 import StyleManagerSorter from '../../utils/sorter/StyleManagerSorter';
 import { DragDirection } from '../../utils/sorter/types';
 import Layer from '../model/Layer';
@@ -44,7 +45,7 @@ export default class LayersView extends View<Layer> {
             itemSel: `.${pfx}layer`,
             pfx: config.pStylePrefix,
             document: document,
-            placeholderElement: placeholderElement,
+            placeholderElements: defaultPlaceholderElements(), // TODO: check taht
           },
           dragBehavior: {
             dragDirection: DragDirection.Vertical,

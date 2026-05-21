@@ -79,8 +79,8 @@
     color: #d6d6d6;
 
     transition:
-            color 180ms ease,
-            background-color 180ms ease;
+      color 180ms ease,
+      background-color 180ms ease;
 
     &::after {
       content: '';
@@ -95,13 +95,13 @@
     }
 
     &:hover {
-      color: var(--gjs-tertiary-color);;
+      color: var(--gjs-tertiary-color);
     }
 
     &.#{gjs_vars.$pn-prefix}active {
       background-color: transparent;
       box-shadow: none;
-      color: var(--gjs-quaternary-color);;
+      color: var(--gjs-quaternary-color);
 
       &::after {
         width: 100%;

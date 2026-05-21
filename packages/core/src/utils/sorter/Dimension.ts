@@ -12,6 +12,7 @@ export default class Dimension {
   public width: number;
   public offsets: ReturnType<CanvasModule['getElementOffsets']>;
   public dir?: boolean;
+  public el?: HTMLElement;
 
   /**
    * Initializes the DimensionCalculator with the given initial dimensions.
@@ -34,6 +35,7 @@ export default class Dimension {
     this.width = initialDimensions.width;
     this.offsets = initialDimensions.offsets;
     this.dir = initialDimensions.dir;
+    this.el = initialDimensions.el;
   }
 
   /**
@@ -111,6 +113,7 @@ export default class Dimension {
       width: this.width,
       offsets: { ...this.offsets }, // Shallow copy of offsets
       dir: this.dir,
+      el: this.el,
     });
   }
 
