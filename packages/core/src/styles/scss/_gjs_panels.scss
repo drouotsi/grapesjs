@@ -37,14 +37,13 @@
   }
 
   &views {
-    border-bottom: 2px solid var(--gjs-main-dark-color);
     right: calc(var(--gjs-right-flex) - var(--gjs-left-width));
     width: var(--gjs-left-width);
     z-index: 4;
 
     &-container {
-      height: calc(100% - 42px);
-      margin: 42px 0 0;
+      height: 100%;
+      padding: 0 !important;
       right: calc(var(--gjs-right-flex) - var(--gjs-left-width));
       width: var(--gjs-left-width);
       overflow: auto;

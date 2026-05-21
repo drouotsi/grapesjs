@@ -199,13 +199,12 @@ $guide_pad: 5px !default;
 .#{gjs_vars.$cv-prefix}canvas {
   box-sizing: border-box;
   width: calc(100% - var(--gjs-left-width));
-  height: calc(100% - var(--gjs-canvas-top));
+  height: 100%;
   bottom: 0;
   overflow: hidden;
   z-index: 1;
   position: absolute;
   left: var(--gjs-left-width);
-  top: var(--gjs-canvas-top);
 
   &-bg {
     background-color: rgba(0, 0, 0, 0.15);
